@@ -1,0 +1,46 @@
+[33m[nodemon] 3.1.7[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): *.*[39m
+[33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[32m[nodemon] starting `node server.js`[39m
+registerEmployee: [AsyncFunction: registerEmployee]
+loginEmployee: [AsyncFunction: loginEmployee]
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE: address already in use :::4000
+    at Server.setupListenHandle [as _listen2] (node:net:1463:16)
+    at listenInCluster (node:net:1511:12)
+    at Server.listen (node:net:1599:7)
+    at Function.listen (/home/john/lslt-portal/employee-service/node_modules/express/lib/application.js:635:24)
+    at Object.<anonymous> (/home/john/lslt-portal/employee-service/server.js:26:5)
+    at Module._compile (node:internal/modules/cjs/loader:1198:14)
+    at Object.Module._extensions..js (node:internal/modules/cjs/loader:1252:10)
+    at Module.load (node:internal/modules/cjs/loader:1076:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:911:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:81:12)
+Emitted 'error' event on Server instance at:
+    at emitErrorNT (node:net:1490:8)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 4000
+}
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+node:events:491
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: read EIO
+    at TTY.onStreamRead (node:internal/stream_base_commons:217:20)
+Emitted 'error' event on ReadStream instance at:
+    at emitErrorNT (node:internal/streams/destroy:157:8)
+    at emitErrorCloseNT (node:internal/streams/destroy:122:3)
+    at processTicksAndRejections (node:internal/process/task_queues:83:21) {
+  errno: -5,
+  code: 'EIO',
+  syscall: 'read'
+}

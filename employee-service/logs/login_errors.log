@@ -1,0 +1,50 @@
+[2024-10-09T20:22:39.994Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T20:22:40.010Z] Error during login for DNI/NIE Y8067290P: password authentication failed for user "john"
+[2024-10-09T20:28:45.484Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T20:28:45.498Z] Error during login for DNI/NIE Y8067290P: password authentication failed for user "john"
+[2024-10-09T20:32:22.320Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T20:32:22.337Z] Error during login for DNI/NIE Y8067290P: password authentication failed for user "john"
+[2024-10-09T20:33:04.560Z] Login attempt with DNI/NIE: 
+[2024-10-09T20:33:04.566Z] Error during login for DNI/NIE : password authentication failed for user "john"
+[2024-10-09T20:34:25.247Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T20:34:25.295Z] Error during login for DNI/NIE Y8067290P: permission denied for table employees
+[2024-10-09T20:40:34.673Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T20:40:34.693Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-09T20:40:34.814Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-09T20:40:34.816Z] JWT Token generated for DNI/NIE Y8067290P: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzI4NTA2NDM0LCJleHAiOjE3Mjg1MTAwMzR9.s3kHz3bO_bpkg8lBJPduv39tQYqB98ma6kAoeGiFh94
+[2024-10-09T20:40:55.159Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T20:40:55.170Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-09T20:40:55.302Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-09T20:40:55.303Z] JWT Token generated for DNI/NIE Y8067290P: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzI4NTA2NDU1LCJleHAiOjE3Mjg1MTAwNTV9.8s87nE792Tv1ZaDopYR5K5oppEhQvsUE9OoHqCrEoFc
+[2024-10-09T20:40:58.844Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T20:40:58.847Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-09T20:40:59.079Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-09T20:40:59.080Z] JWT Token generated for DNI/NIE Y8067290P: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzI4NTA2NDU5LCJleHAiOjE3Mjg1MTAwNTl9.T-_S_A7EVebIeCXvvDIG7y0JhMM6LtRN13BkRvCf41c
+[2024-10-09T22:38:30.860Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T22:38:31.070Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-09T22:38:31.236Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-09T22:38:31.237Z] Error during login for DNI/NIE Y8067290P: secretOrPrivateKey must have a value
+[2024-10-09T22:38:36.870Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T22:38:36.873Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-09T22:38:37.104Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-09T22:38:37.104Z] Error during login for DNI/NIE Y8067290P: secretOrPrivateKey must have a value
+[2024-10-09T22:44:01.756Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T22:44:01.766Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-09T22:44:01.913Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-09T22:44:01.914Z] Error during login for DNI/NIE Y8067290P: secretOrPrivateKey must have a value
+[2024-10-09T22:44:55.077Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T22:44:55.086Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-09T22:44:55.219Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-09T22:44:55.220Z] Error during login for DNI/NIE Y8067290P: secretOrPrivateKey must have a value
+[2024-10-09T22:48:26.459Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-09T22:48:26.468Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-09T22:48:26.606Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-09T22:48:26.606Z] Error during login for DNI/NIE Y8067290P: secretOrPrivateKey must have a value
+[2024-10-10T08:26:07.092Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-10T08:26:07.103Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-10T08:26:07.270Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-10T08:26:07.270Z] Error during login for DNI/NIE Y8067290P: secretOrPrivateKey must have a value
+[2024-10-10T16:16:06.344Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-10T16:16:06.355Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-10T16:16:06.546Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-10T16:16:06.546Z] Error during login for DNI/NIE Y8067290P: secretOrPrivateKey must have a value
