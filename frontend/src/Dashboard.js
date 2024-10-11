@@ -2,59 +2,71 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function Dashboard({ employee, updateEmployee }) {
-  const [editMode, setEditMode] = useState(false);
+  const [editingName, setEditingName] = useState(false);
   const [firstName, setFirstName] = useState(employee.first_name);
   const [lastName, setLastName] = useState(employee.last_name);
   const [message, setMessage] = useState('');
 
-  // Function to save name change
-  const handleSaveNameChange = async () => {
+  // Function to handle name change submission
+  const handleNameChange = async (e) => {
+    e.preventDefault();
+    setMessage('');  // Clear previous messages
+
     try {
-      const response = await axios.put('/api/employees/updateName', {
-        dni_nie: employee.dni_nie,
+      const response = await axios.put(`/api/employees/${employee.id}`, {
         first_name: firstName,
         last_name: lastName,
       });
-      updateEmployee(response.data.employee);  // Update employee details
-      setMessage('Name updated successfully.');
-      setEditMode(false);
+
+      if (response.status === 200) {
+        updateEmployee(response.data.employee);  // Update employee in parent component
+        setEditingName(false);
+        setMessage('Name successfully updated!');
+      } else {
+        setMessage('Error updating name. Please try again.');
+      }
     } catch (error) {
-      setMessage('Error updating name.');
-      console.error(error);
+      console.error('Error updating name:', error);
+      setMessage('Error updating name. Please try again.');
     }
   };
 
   return (
     <div className="dashboard-container">
       <h1>Welcome to Your Dashboard</h1>
-      {editMode ? (
-        <div className="name-edit">
-          <label>First Name:</label>
-          <input
-            type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-          <label>Last Name:</label>
-          <input
-            type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-          <button onClick={handleSaveNameChange}>Save</button>
-          <button onClick={() => setEditMode(false)}>Cancel</button>
-        </div>
+      {editingName ? (
+        <form onSubmit={handleNameChange}>
+          <div className="form-group">
+            <label htmlFor="first_name">First Name:</label>
+            <input
+              type="text"
+              id="first_name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="last_name">Last Name:</label>
+            <input
+              type="text"
+              id="last_name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Save Changes</button>
+        </form>
       ) : (
         <>
-          <p>
-            Employee: {employee.first_name} {employee.last_name}
-          </p>
-          <button onClick={() => setEditMode(true)}>Edit Name</button>
+          <p>Employee: {employee.first_name} {employee.last_name}</p>
+          <p>Role: {employee.role}</p>
+          <button onClick={() => setEditingName(true)}>Edit Name</button>
         </>
       )}
-
-      <p>Role: {employee.role}</p>
-
+      {message && <p>{message}</p>}
+      
       {/* Quick Action Buttons */}
       <div className="dashboard-actions">
         <button onClick={() => alert('Clock In/Out feature coming soon!')}>
@@ -70,8 +82,11 @@ function Dashboard({ employee, updateEmployee }) {
         )}
       </div>
 
-      {/* Display feedback message */}
-      {message && <p className="feedback-message">{message}</p>}
+      {/* Placeholder for Announcements */}
+      <div className="dashboard-announcements">
+        <h2>Announcements</h2>
+        <p>No new announcements at the moment.</p>
+      </div>
     </div>
   );
 }
