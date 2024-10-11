@@ -1,7 +1,8 @@
-// src/App.js
 import React, { useState } from 'react';
 import axios from 'axios';
-import './App.css';  // Make sure this file exists in the same directory
+import './App.css';
+import logo from './Logo.png';
+import Dashboard from './Dashboard';  // Import the new Dashboard component
 
 function App() {
   const [dniNie, setDniNie] = useState('');
@@ -10,29 +11,32 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [employee, setEmployee] = useState(null);
 
-  // Function to handle login submission
   const handleLogin = async (event) => {
-    event.preventDefault(); // Prevents the page from reloading on form submission
-    setErrorMessage('');    // Reset any previous error message
+    event.preventDefault();
+    setErrorMessage('');
 
     try {
-      // Call the backend API to authenticate the user
       const response = await axios.post('/api/employees/login', { dni_nie: dniNie, password });
-      setIsLoggedIn(true);         // Set the logged-in state to true
-      setEmployee(response.data.employee); // Store employee details from response
+      setIsLoggedIn(true);
+      setEmployee(response.data.employee);
     } catch (error) {
       setErrorMessage('Invalid credentials. Please try again.');
-      console.error('Error during login:', error);
     }
+  };
+
+  // Function to update employee after name change
+  const updateEmployee = (updatedEmployee) => {
+    setEmployee(updatedEmployee);
   };
 
   return (
     <div className="App">
       <header className="App-header">
         {!isLoggedIn ? (
-          <div>
+          <div className="container">
+            <img src={logo} alt="Company Logo" className="company-logo" />
             <h1>Employee Portal Login</h1>
-            <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <form onSubmit={handleLogin}>
               <div>
                 <label htmlFor="dniNie">DNI/NIE:</label>
                 <input
@@ -53,18 +57,20 @@ function App() {
                   required
                 />
               </div>
-              {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+              {errorMessage && <p className="error-message">{errorMessage}</p>}
               <button type="submit">Login</button>
             </form>
           </div>
         ) : (
-          <div>
-            <h1>Welcome to the Employee Portal</h1>
-            <p>Employee: {employee.first_name} {employee.last_name}</p>
-            <p>Role: {employee.role}</p>
-          </div>
+          <Dashboard employee={employee} updateEmployee={updateEmployee} />
         )}
       </header>
+
+      {/* Footer section */}
+      <footer className="footer">
+        <p>Copyright &copy; Lakeside La Torre (Murcia) Group S.L.</p>
+        <p>Developed and Built by John McBride</p>
+      </footer>
     </div>
   );
 }
