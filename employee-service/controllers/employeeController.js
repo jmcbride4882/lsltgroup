@@ -18,36 +18,36 @@ const registerEmployee = async (req, res) => {
 
 // Define the function to update employee name
 const updateEmployeeName = async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params; // "id" corresponds to "dni_nie"
   const { first_name, last_name } = req.body;
 
   try {
-    const employee = await employeeModel.findEmployeeById(id);
+    const employee = await employeeModel.findEmployeeByDNI(id);
     if (!employee) {
       return res.status(404).json({ error: 'Employee not found' });
     }
 
     employee.first_name = first_name;
     employee.last_name = last_name;
-    await employeeModel.updateEmployeeName(id, first_name, last_name); // Ensure this function exists in your model
+    await employeeModel.updateEmployeeName(id, first_name, last_name);
     res.status(200).json({ message: 'Employee name updated successfully', employee });
   } catch (error) {
     res.status(500).json({ error: 'Error updating name' });
   }
 };
 
-// Create a writable stream for the error log file
+// Log errors for debugging
 const logFilePath = path.join(__dirname, '../logs/login_errors.log');
 const errorLogStream = fs.createWriteStream(logFilePath, { flags: 'a' });
 
 const logError = (message) => {
   const timestamp = new Date().toISOString();
   const logMessage = `[${timestamp}] ${message}\n`;
-  console.error(logMessage); // Log to console
-  errorLogStream.write(logMessage); // Log to file
+  console.error(logMessage);
+  errorLogStream.write(logMessage);
 };
 
-// Use logError in the loginEmployee function
+// Define the loginEmployee function with error logging
 const loginEmployee = async (req, res) => {
   const { dni_nie, password } = req.body;
   logError(`Login attempt with DNI/NIE: ${dni_nie}`);
@@ -78,5 +78,5 @@ const loginEmployee = async (req, res) => {
   }
 };
 
-// Export functions
+// Export the functions
 module.exports = { registerEmployee, loginEmployee, updateEmployeeName };

@@ -12,9 +12,6 @@ router.post('/login', loginEmployee);
 router.put('/:id/update-name', (req, res, next) => {
   console.log(`Received request to update name for ID: ${req.params.id}`);
   next(); // Call the next middleware/handler
-}, updateEmployeeName);
-
-
-router.put('/:id/update-name', updateEmployeeName);
+}, updateEmployeeName);  // Only keep this route definition
 
 module.exports = router;

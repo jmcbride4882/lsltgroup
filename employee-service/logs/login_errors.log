@@ -100,3 +100,11 @@
 [2024-10-11T21:16:17.849Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
 [2024-10-11T21:16:18.013Z] Password comparison result for DNI/NIE Y8067290P: true
 [2024-10-11T21:16:18.016Z] JWT Token generated for DNI/NIE Y8067290P: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzI4NjgxMzc4LCJleHAiOjE3Mjg2ODQ5Nzh9.KUunsRIlrD9fhRmK8zxRPSeMtTdhe1XmS9xb0zc_2HM
+[2024-10-12T06:16:50.983Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-12T06:16:50.995Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-12T06:16:51.128Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-12T06:16:51.129Z] JWT Token generated for DNI/NIE Y8067290P: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzI4NzEzODExLCJleHAiOjE3Mjg3MTc0MTF9.0YugkwZypzi_wvXkwQOUQUOQnJmEA46iuh1-BVcBIYg
+[2024-10-12T07:13:20.764Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-12T07:13:20.775Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"John","last_name":"McBride","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-12T07:13:20.937Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-12T07:13:20.940Z] JWT Token generated for DNI/NIE Y8067290P: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzI4NzE3MjAwLCJleHAiOjE3Mjg3MjA4MDB9.L_yTn_qOjGMBAbrbogxytlcu4h3Hv1D64ovdFeoAHmA
