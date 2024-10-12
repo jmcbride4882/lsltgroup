@@ -16,12 +16,31 @@ const registerEmployee = async (req, res) => {
   }
 };
 
+// Define the function to update employee name
+const updateEmployeeName = async (req, res) => {
+  const { id } = req.params;
+  const { first_name, last_name } = req.body;
+
+  try {
+    const employee = await employeeModel.findEmployeeById(id);
+    if (!employee) {
+      return res.status(404).json({ error: 'Employee not found' });
+    }
+
+    employee.first_name = first_name;
+    employee.last_name = last_name;
+    await employeeModel.updateEmployeeName(id, first_name, last_name); // Ensure this function exists in your model
+    res.status(200).json({ message: 'Employee name updated successfully', employee });
+  } catch (error) {
+    res.status(500).json({ error: 'Error updating name' });
+  }
+};
+
 // Create a writable stream for the error log file
 const logFilePath = path.join(__dirname, '../logs/login_errors.log');
 const errorLogStream = fs.createWriteStream(logFilePath, { flags: 'a' });
 
 const logError = (message) => {
-  // Write the error message to the log file and the console
   const timestamp = new Date().toISOString();
   const logMessage = `[${timestamp}] ${message}\n`;
   console.error(logMessage); // Log to console
@@ -34,7 +53,6 @@ const loginEmployee = async (req, res) => {
   logError(`Login attempt with DNI/NIE: ${dni_nie}`);
 
   try {
-    // Check if the employee exists in the database
     const employee = await employeeModel.findEmployeeByDNI(dni_nie);
     if (!employee) {
       logError(`Employee not found for DNI/NIE: ${dni_nie}`);
@@ -43,7 +61,6 @@ const loginEmployee = async (req, res) => {
 
     logError(`Employee found: ${JSON.stringify(employee)}`);
 
-    // Compare the provided password with the stored hashed password
     const isMatch = await bcrypt.compare(password, employee.password);
     logError(`Password comparison result for DNI/NIE ${dni_nie}: ${isMatch}`);
 
@@ -52,7 +69,6 @@ const loginEmployee = async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
 
-    // Generate a JWT token for the authenticated user
     const token = jwt.sign({ id: employee.id, role: employee.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
     logError(`JWT Token generated for DNI/NIE ${dni_nie}: ${token}`);
     res.json({ token, employee });
@@ -62,5 +78,5 @@ const loginEmployee = async (req, res) => {
   }
 };
 
-// Ensure both functions are exported correctly
-module.exports = { registerEmployee, loginEmployee };
+// Export functions
+module.exports = { registerEmployee, loginEmployee, updateEmployeeName };

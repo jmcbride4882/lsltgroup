@@ -88,3 +88,15 @@
 [2024-10-11T20:41:10.006Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
 [2024-10-11T20:41:10.170Z] Password comparison result for DNI/NIE Y8067290P: true
 [2024-10-11T20:41:10.173Z] JWT Token generated for DNI/NIE Y8067290P: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzI4Njc5MjcwLCJleHAiOjE3Mjg2ODI4NzB9.MJ6metm6LJzIstweseFjDljIoBnfMLm6DYBgh2nftis
+[2024-10-11T20:56:31.951Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-11T20:56:31.973Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-11T20:56:32.135Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-11T20:56:32.138Z] JWT Token generated for DNI/NIE Y8067290P: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzI4NjgwMTkyLCJleHAiOjE3Mjg2ODM3OTJ9.10DqB7DTeDntMDIhhdaGc9xJPGGWLCyfjRyCA0U1Olk
+[2024-10-11T20:58:03.252Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-11T20:58:03.263Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-11T20:58:03.398Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-11T20:58:03.399Z] JWT Token generated for DNI/NIE Y8067290P: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzI4NjgwMjgzLCJleHAiOjE3Mjg2ODM4ODN9.p5AbgN7HgVrbPJz3ZpDs6DQ1ulH34RULlNRMmiSfETM
+[2024-10-11T21:16:17.822Z] Login attempt with DNI/NIE: Y8067290P
+[2024-10-11T21:16:17.849Z] Employee found: {"id":1,"dni_nie":"Y8067290P","first_name":"Admin","last_name":"User","role":"Admin","password":"$2a$10$SrmtKtOsMuHQKo9uJ1rvW.iz6Exd3tmNZ1MyX78KwUPl9v4M5JVJ2"}
+[2024-10-11T21:16:18.013Z] Password comparison result for DNI/NIE Y8067290P: true
+[2024-10-11T21:16:18.016Z] JWT Token generated for DNI/NIE Y8067290P: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6IkFkbWluIiwiaWF0IjoxNzI4NjgxMzc4LCJleHAiOjE3Mjg2ODQ5Nzh9.KUunsRIlrD9fhRmK8zxRPSeMtTdhe1XmS9xb0zc_2HM

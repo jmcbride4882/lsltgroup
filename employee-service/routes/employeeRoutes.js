@@ -1,14 +1,20 @@
-// ~/lslt-portal/employee-service/routes/employeeRoutes.js
-
 const express = require('express');
-const { registerEmployee, loginEmployee } = require('../controllers/employeeController'); // Ensure correct import path
+const { registerEmployee, loginEmployee, updateEmployeeName } = require('../controllers/employeeController');
 const router = express.Router();
 
-console.log("registerEmployee:", registerEmployee); // Debug log
-console.log("loginEmployee:", loginEmployee); // Debug log
-
-// Define routes using the imported functions
+// Route for employee registration
 router.post('/register', registerEmployee);
+
+// Route for employee login
 router.post('/login', loginEmployee);
+
+// Route to update employee name
+router.put('/:id/update-name', (req, res, next) => {
+  console.log(`Received request to update name for ID: ${req.params.id}`);
+  next(); // Call the next middleware/handler
+}, updateEmployeeName);
+
+
+router.put('/:id/update-name', updateEmployeeName);
 
 module.exports = router;
