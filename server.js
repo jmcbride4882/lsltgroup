@@ -11,6 +11,7 @@ const fs = require('fs').promises;
 const { sequelize } = require('./models');
 const logger = require('./utils/logger');
 const { captureAuditLog } = require('./utils/audit');
+const { initializeSettings } = require('./utils/settings');
 
 // Import routes
 const authRoutes = require('./routes/auth');
@@ -246,6 +247,14 @@ async function startServer() {
     } else {
       await sequelize.sync({ force: false });
       logger.info('Database models loaded');
+    }
+
+    // Initialize default settings
+    try {
+      await initializeSettings();
+      logger.info('Default settings initialized');
+    } catch (error) {
+      logger.warn('Failed to initialize settings', { error: error.message });
     }
 
     // Start the server
