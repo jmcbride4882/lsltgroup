@@ -627,6 +627,53 @@ const Campaign = sequelize.define('Campaign', {
   ]
 });
 
+// Settings table - Store all configurable system settings
+const Setting = sequelize.define('Setting', {
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
+  category: {
+    type: DataTypes.ENUM('system', 'unifi', 'email', 'loyalty', 'branding', 'network', 'printers', 'security'),
+    allowNull: false
+  },
+  key: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  value: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  dataType: {
+    type: DataTypes.ENUM('string', 'number', 'boolean', 'json', 'password'),
+    defaultValue: 'string'
+  },
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: true
+  },
+  isEditable: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true
+  },
+  requiresRestart: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
+  },
+  validation: {
+    type: DataTypes.JSON,
+    allowNull: true
+  }
+}, {
+  indexes: [
+    { fields: ['category'] },
+    { fields: ['key'] },
+    { unique: true, fields: ['category', 'key'] }
+  ]
+});
+
 // Define associations
 User.hasMany(Device, { foreignKey: 'userId', as: 'devices' });
 Device.belongsTo(User, { foreignKey: 'userId', as: 'user' });
@@ -655,5 +702,6 @@ module.exports = {
   Printer,
   FamilyGroup,
   Site,
-  Campaign
+  Campaign,
+  Setting
 };
