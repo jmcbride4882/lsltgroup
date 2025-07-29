@@ -466,41 +466,29 @@ async function initializeDefaultRewards() {
  */
 async function getTierStatistics() {
   try {
-    const sequelize = require('../models').sequelize;
+    const { User } = require('../models');
+    const { Op } = require('sequelize');
 
-    const tierStats = await User.findAll({
+    const stats = await User.findAll({
       attributes: [
         'loyaltyTier',
-        [sequelize.fn('COUNT', sequelize.col('loyaltyTier')), 'count']
+        [sequelize.fn('COUNT', sequelize.col('id')), 'count']
       ],
-      group: ['loyaltyTier'],
-      raw: true
+      group: ['loyaltyTier']
     });
 
-    // Calculate tier upgrade trends (last 30 days)
-    const thirtyDaysAgo = moment().subtract(30, 'days').toDate();
-    
-    const recentUpgrades = await sequelize.query(`
-      SELECT 
-        strftime('%Y-%m-%d', updatedAt) as date,
-        loyaltyTier,
-        COUNT(*) as upgrades
-      FROM Users 
-      WHERE updatedAt >= ? 
-        AND visitCount IN (5, 15, 30)
-      GROUP BY date, loyaltyTier
-      ORDER BY date DESC
-    `, {
-      replacements: [thirtyDaysAgo],
-      type: sequelize.QueryTypes.SELECT
-    });
-
-    return {
-      tierDistribution: tierStats,
-      recentUpgrades,
-      tierBenefits: LOYALTY_TIERS
+    const tierStats = {
+      bronze: 0,
+      silver: 0,
+      gold: 0,
+      platinum: 0
     };
 
+    stats.forEach(stat => {
+      tierStats[stat.loyaltyTier] = parseInt(stat.dataValues.count) || 0;
+    });
+
+    return tierStats;
   } catch (error) {
     logger.error('Error getting tier statistics', {
       error: error.message
@@ -510,44 +498,57 @@ async function getTierStatistics() {
 }
 
 /**
- * Award manual reward (admin function)
+ * Award manual reward to user (admin function)
  */
-async function awardManualReward(userId, rewardData, adminStaffId) {
+async function awardManualReward(userId, rewardData, staffId = null) {
   try {
+    const { User, Voucher } = require('../models');
+    const { generateVoucher } = require('./vouchers');
+    const { captureAuditLog, AUDIT_ACTIONS } = require('./audit');
+
+    // Find the user
     const user = await User.findByPk(userId);
     if (!user) {
       throw new Error('User not found');
     }
 
+    // Generate voucher for the reward
     const voucher = await generateVoucher({
-      type: 'promotional',
-      userId,
-      staffId: adminStaffId,
+      userId: user.id,
+      type: 'manual_reward',
       value: rewardData.value,
-      description: rewardData.description,
-      validityDays: rewardData.validityDays || 30
+      description: rewardData.description || 'Manual reward from admin',
+      validityDays: rewardData.validityDays || 30,
+      metadata: {
+        reason: rewardData.reason || 'Manual admin reward',
+        awardedBy: staffId,
+        isManual: true
+      }
     });
 
+    // Log the manual reward
     await captureAuditLog(
-      'MANUAL_REWARD_AWARDED',
+      AUDIT_ACTIONS.LOYALTY_REWARD_ISSUED,
       'voucher',
       voucher.id,
       userId,
-      adminStaffId,
+      staffId,
       null,
       null,
       {
-        reason: rewardData.reason || 'Manual reward',
+        type: 'manual_reward',
         value: rewardData.value,
-        description: rewardData.description
+        description: rewardData.description,
+        reason: rewardData.reason,
+        validityDays: rewardData.validityDays
       }
     );
 
     logger.info('Manual reward awarded', {
       userId,
-      adminStaffId,
-      voucherCode: voucher.code,
-      value: rewardData.value
+      voucherId: voucher.id,
+      value: rewardData.value,
+      staffId
     });
 
     return voucher;
@@ -556,7 +557,6 @@ async function awardManualReward(userId, rewardData, adminStaffId) {
     logger.error('Error awarding manual reward', {
       error: error.message,
       userId,
-      adminStaffId,
       rewardData
     });
     throw error;
@@ -564,6 +564,8 @@ async function awardManualReward(userId, rewardData, adminStaffId) {
 }
 
 module.exports = {
+  LOYALTY_TIERS,
+  DEFAULT_REWARDS,
   calculateLoyaltyTier,
   getTierBenefits,
   calculateTierProgress,
@@ -571,7 +573,5 @@ module.exports = {
   getUserLoyaltySummary,
   initializeDefaultRewards,
   getTierStatistics,
-  awardManualReward,
-  LOYALTY_TIERS,
-  DEFAULT_REWARDS
+  awardManualReward
 };
